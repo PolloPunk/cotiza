@@ -125,39 +125,51 @@
             const sesiones = document.getElementById('sesiones').value;
 
             let costo = 0;
-            let descuento = 0;
+            let descuentoPersonas = 0;
+            let descuentoClases = 0;
 
             if (personas == 1) {
                 if (sesiones == 1) {
                     costo = 15000;
                 } else if (sesiones == 8) {
                     costo = 108000;
+                    descuentoClases = 5; // Descuento para 8 clases
                 } else if (sesiones == 12) {
                     costo = 160000;
+                    descuentoClases = 10; // Descuento para 12 clases
                 }
             } else if (personas == 2) {
                 if (sesiones == 1) {
                     costo = 27000;
                 } else if (sesiones == 8) {
                     costo = 210000;
-                    descuento = 10;
+                    descuentoClases = 5; // Descuento para 8 clases
+                    descuentoPersonas = 10; // Descuento por 2 personas
                 } else if (sesiones == 12) {
                     costo = 270000;
-                    descuento = 15;
+                    descuentoClases = 10; // Descuento para 12 clases
+                    descuentoPersonas = 15; // Descuento por 2 personas
                 }
             } else if (personas == 3) {
                 if (sesiones == 1) {
                     costo = 35000;
                 } else if (sesiones == 8) {
                     costo = 290000;
-                    descuento = 10;
+                    descuentoClases = 5; // Descuento para 8 clases
+                    descuentoPersonas = 10; // Descuento por 3 personas
                 } else if (sesiones == 12) {
                     costo = 380000;
-                    descuento = 15;
+                    descuentoClases = 10; // Descuento para 12 clases
+                    descuentoPersonas = 15; // Descuento por 3 personas
                 }
             }
 
-            document.getElementById('result').innerText = `Costo Total: $${costo} CLP\nDescuento Aplicado: ${descuento}%`;
+            let descuentoTotal = descuentoClases + descuentoPersonas;
+
+            // Mostrar resultado con descuento
+            let costoFinal = costo - (costo * descuentoTotal / 100);
+
+            document.getElementById('result').innerText = `Costo Total: $${costoFinal.toFixed(0)} CLP\nDescuento Aplicado: ${descuentoTotal}%`;
 
             // Configurar botón de WhatsApp con el nuevo mensaje
             const whatsappLink = `https://wa.me/56950092410?text=Hola%20Alexis,%20coticé%20y%20estoy%20interesado%20en%20${sesiones}%20clases%20para%20${personas}%20personas.`;
