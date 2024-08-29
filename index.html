@@ -3,77 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cotización de Clases Personalizadas</title>
+    <title>Cotización Ozaru Training</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
         .container {
             max-width: 500px;
-            margin: 0 auto;
+            width: 100%;
             padding: 20px;
-            background: #fff;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            background: #1F497D;
+            color: #fff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
         }
         h1 {
             text-align: center;
-            color: #1F497D;
+            color: #FDC500;
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-family: 'Arial Black', sans-serif;
         }
         label {
-            font-size: 16px;
-            color: #333;
+            font-size: 18px;
+            margin-top: 10px;
         }
         select, input {
             width: 100%;
-            padding: 10px;
-            margin: 10px 0;
+            padding: 12px;
+            margin: 10px 0 20px 0;
             font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+        #result {
+            margin: 20px 0;
+            text-align: center;
+            font-size: 22px;
+            background-color: #FDC500;
+            color: #1F497D;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .info {
+            margin-top: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .info h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #FDC500;
         }
         button {
             width: 100%;
             padding: 15px;
             font-size: 18px;
             color: #fff;
-            background-color: #1F497D;
+            background-color: #25D366;
             border: none;
+            border-radius: 5px;
             cursor: pointer;
+            text-align: center;
+            margin-top: 10px;
         }
         button:hover {
-            background-color: #4F81BD;
-        }
-        #result {
-            margin: 20px 0;
-            text-align: center;
-            font-size: 18px;
-            color: #333;
+            background-color: #1DAB5A;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Cotización de Clases Personalizadas</h1>
+        <h1>Cotización Ozaru Training</h1>
+        
         <label for="personas">Número de Personas:</label>
-        <select id="personas">
+        <select id="personas" onchange="calcularCosto()">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
         </select>
         
         <label for="sesiones">Número de Sesiones:</label>
-        <select id="sesiones">
+        <select id="sesiones" onchange="calcularCosto()">
             <option value="1">1</option>
             <option value="8">8</option>
             <option value="12">12</option>
         </select>
 
-        <button onclick="calcularCosto()">Calcular Costo</button>
-
-        <div id="result"></div>
+        <div id="result">Seleccione las opciones para calcular el costo.</div>
 
         <button id="whatsappBtn" style="display:none;">Cotizar en WhatsApp</button>
+
+        <div class="info">
+            <h3>Sobre el Servicio:</h3>
+            <p>El servicio ofrece entrenamientos personalizados a domicilio y/o en parques cercanos al domicilio, con una duración de 1 hora a 1 hora 20 minutos máximo. El objetivo es bajar de peso, desarrollar músculo y mejorar la funcionalidad motriz a través de ejercicios de calistenia, movilidad y fuerza.</p>
+            <p>Las sesiones se planifican progresivamente según las capacidades y objetivos del cliente, con acompañamiento de tips nutricionales y hábitos saludables.</p>
+            <p>Contacto: Alexis Rojas Sánchez, Profesor de Educación Física PUCV. Correo: Alerxcis@gmail.com</p>
+        </div>
     </div>
 
     <script>
