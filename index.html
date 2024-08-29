@@ -125,51 +125,41 @@
             const sesiones = document.getElementById('sesiones').value;
 
             let costo = 0;
-            let descuentoPersonas = 0;
-            let descuentoClases = 0;
+            let costoBase = 15000 * sesiones;  // Costo base sin descuento
+            let costoReal = 0;
+            let descuento = 0;
 
+            // Calcular el costo basado en la tabla proporcionada
             if (personas == 1) {
                 if (sesiones == 1) {
-                    costo = 15000;
+                    costoReal = 15000;
                 } else if (sesiones == 8) {
-                    costo = 108000;
-                    descuentoClases = 5; // Descuento para 8 clases
+                    costoReal = 108000;
                 } else if (sesiones == 12) {
-                    costo = 160000;
-                    descuentoClases = 10; // Descuento para 12 clases
+                    costoReal = 160000;
                 }
             } else if (personas == 2) {
                 if (sesiones == 1) {
-                    costo = 27000;
+                    costoReal = 27000;
                 } else if (sesiones == 8) {
-                    costo = 210000;
-                    descuentoClases = 5; // Descuento para 8 clases
-                    descuentoPersonas = 10; // Descuento por 2 personas
+                    costoReal = 210000;
                 } else if (sesiones == 12) {
-                    costo = 270000;
-                    descuentoClases = 10; // Descuento para 12 clases
-                    descuentoPersonas = 15; // Descuento por 2 personas
+                    costoReal = 270000;
                 }
             } else if (personas == 3) {
                 if (sesiones == 1) {
-                    costo = 35000;
+                    costoReal = 35000;
                 } else if (sesiones == 8) {
-                    costo = 290000;
-                    descuentoClases = 5; // Descuento para 8 clases
-                    descuentoPersonas = 10; // Descuento por 3 personas
+                    costoReal = 290000;
                 } else if (sesiones == 12) {
-                    costo = 380000;
-                    descuentoClases = 10; // Descuento para 12 clases
-                    descuentoPersonas = 15; // Descuento por 3 personas
+                    costoReal = 380000;
                 }
             }
 
-            let descuentoTotal = descuentoClases + descuentoPersonas;
+            // Calcular el porcentaje de descuento informativo
+            descuento = ((costoBase - costoReal) / costoBase) * 100;
 
-            // Mostrar resultado con descuento
-            let costoFinal = costo - (costo * descuentoTotal / 100);
-
-            document.getElementById('result').innerText = `Costo Total: $${costoFinal.toFixed(0)} CLP\nDescuento Aplicado: ${descuentoTotal}%`;
+            document.getElementById('result').innerText = `Costo Total: $${costoReal.toFixed(0)} CLP\nDescuento Aplicado: ${descuento.toFixed(0)}%`;
 
             // Configurar botón de WhatsApp con el nuevo mensaje
             const whatsappLink = `https://wa.me/56950092410?text=Hola%20Alexis,%20coticé%20y%20estoy%20interesado%20en%20${sesiones}%20clases%20para%20${personas}%20personas.`;
