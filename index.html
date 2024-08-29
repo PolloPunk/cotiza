@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotización de Clases Personalizadas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #1F497D;
+        }
+        label {
+            font-size: 16px;
+            color: #333;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #1F497D;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4F81BD;
+        }
+        #result {
+            margin: 20px 0;
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cotización de Clases Personalizadas</h1>
+        <label for="personas">Número de Personas:</label>
+        <select id="personas">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        
+        <label for="sesiones">Número de Sesiones:</label>
+        <select id="sesiones">
+            <option value="1">1</option>
+            <option value="8">8</option>
+            <option value="12">12</option>
+        </select>
+
+        <button onclick="calcularCosto()">Calcular Costo</button>
+
+        <div id="result"></div>
+
+        <button id="whatsappBtn" style="display:none;">Cotizar en WhatsApp</button>
+    </div>
+
+    <script>
+        function calcularCosto() {
+            const personas = document.getElementById('personas').value;
+            const sesiones = document.getElementById('sesiones').value;
+
+            let costo = 0;
+            let descuento = 0;
+
+            if (personas == 1) {
+                if (sesiones == 1) {
+                    costo = 15000;
+                } else if (sesiones == 8) {
+                    costo = 108000;
+                } else if (sesiones == 12) {
+                    costo = 160000;
+                }
+            } else if (personas == 2) {
+                if (sesiones == 1) {
+                    costo = 27000;
+                } else if (sesiones == 8) {
+                    costo = 210000;
+                    descuento = 10;
+                } else if (sesiones == 12) {
+                    costo = 270000;
+                    descuento = 15;
+                }
+            } else if (personas == 3) {
+                if (sesiones == 1) {
+                    costo = 35000;
+                } else if (sesiones == 8) {
+                    costo = 290000;
+                    descuento = 10;
+                } else if (sesiones == 12) {
+                    costo = 380000;
+                    descuento = 15;
+                }
+            }
+
+            document.getElementById('result').innerText = `Costo Total: $${costo} CLP\nDescuento Aplicado: ${descuento}%`;
+
+            // Configurar botón de WhatsApp
+            const whatsappLink = `https://wa.me/56950092410?text=Hola%20Alexis,%20quiero%20cotizar%20${personas}%20personas%20y%20${sesiones}%20sesiones.%20El%20costo%20total%20es%20de%20${costo}%20CLP.`;
+            const whatsappBtn = document.getElementById('whatsappBtn');
+            whatsappBtn.style.display = 'block';
+            whatsappBtn.onclick = function() {
+                window.open(whatsappLink, '_blank');
+            };
+        }
+    </script>
+</body>
+</html>
