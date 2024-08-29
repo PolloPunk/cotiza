@@ -124,42 +124,46 @@
             const personas = document.getElementById('personas').value;
             const sesiones = document.getElementById('sesiones').value;
 
-            let costo = 0;
-            let costoBase = 15000 * sesiones;  // Costo base sin descuento
             let costoReal = 0;
             let descuento = 0;
 
-            // Calcular el costo basado en la tabla proporcionada
+            // Calcular el costo basado en la tabla proporcionada y establecer descuentos informativos
             if (personas == 1) {
                 if (sesiones == 1) {
                     costoReal = 15000;
+                    descuento = 0; // Sin descuento
                 } else if (sesiones == 8) {
                     costoReal = 108000;
+                    descuento = 10; // Descuento fijo
                 } else if (sesiones == 12) {
                     costoReal = 160000;
+                    descuento = 20; // Descuento fijo
                 }
             } else if (personas == 2) {
                 if (sesiones == 1) {
                     costoReal = 27000;
+                    descuento = 0; // Sin descuento
                 } else if (sesiones == 8) {
                     costoReal = 210000;
+                    descuento = 15; // Descuento fijo
                 } else if (sesiones == 12) {
                     costoReal = 270000;
+                    descuento = 25; // Descuento fijo
                 }
             } else if (personas == 3) {
                 if (sesiones == 1) {
                     costoReal = 35000;
+                    descuento = 0; // Sin descuento
                 } else if (sesiones == 8) {
                     costoReal = 290000;
+                    descuento = 15; // Descuento fijo
                 } else if (sesiones == 12) {
                     costoReal = 380000;
+                    descuento = 25; // Descuento fijo
                 }
             }
 
-            // Calcular el porcentaje de descuento informativo
-            descuento = ((costoBase - costoReal) / costoBase) * 100;
-
-            document.getElementById('result').innerText = `Costo Total: $${costoReal.toFixed(0)} CLP\nDescuento Aplicado: ${descuento.toFixed(0)}%`;
+            document.getElementById('result').innerText = `Costo Total: $${costoReal.toFixed(0)} CLP\nDescuento Aplicado: ${descuento}%`;
 
             // Configurar botón de WhatsApp con el nuevo mensaje
             const whatsappLink = `https://wa.me/56950092410?text=Hola%20Alexis,%20coticé%20y%20estoy%20interesado%20en%20${sesiones}%20clases%20para%20${personas}%20personas.`;
